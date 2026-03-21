@@ -1,5 +1,5 @@
 import css from './UserLink.module.css';
-import userLogo from '../../../public/outline.png';
+import userLogo from '../../assets/outline.png';
 import { Link } from 'react-router-dom';
 const UserLink = () => {
   return (
