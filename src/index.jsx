@@ -8,7 +8,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <BrowserRouter basename="/project-01">
+  <BrowserRouter basename="/Water-Tracker-project">
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <App />

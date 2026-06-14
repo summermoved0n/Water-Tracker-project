@@ -15,7 +15,7 @@ const PopoverDay = ({ date, norm, selectedMonth }) => {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
-    const handleResize = event => {
+    const handleResize = (event) => {
       setIsMobile(event.matches);
     };
 
@@ -26,15 +26,11 @@ const PopoverDay = ({ date, norm, selectedMonth }) => {
     };
   }, []);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     const button = event.currentTarget;
     setAnchorEl(event.currentTarget);
     const anchorTop = button.getBoundingClientRect().top;
-    setCoordsButton(prev => ({ ...prev, top: anchorTop }));
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+    setCoordsButton((prev) => ({ ...prev, top: anchorTop }));
   };
 
   const open = Boolean(anchorEl);
@@ -45,46 +41,67 @@ const PopoverDay = ({ date, norm, selectedMonth }) => {
   const screenWidth = window.innerWidth / 2;
   const leftCoordinate = screenWidth + halfWidthPopover;
 
-  const popoverContent = useMemo(() => (
-    <Popover
-      id={id}
-      open={open}
-      anchorEl={anchorEl}
-      onClose={handleClose}
-      anchorReference={anchor}
-      anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'center',
-      }}
-      transformOrigin={{
-        vertical: 'bottom',
-        horizontal: 'right',
-      }}
-    >
-      <div className={d.div}>
-        <div>
-          <p className={d.date}>
-            {date}, {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
+  const popoverContent = useMemo(
+    () => (
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={setAnchorEl(null)}
+        anchorReference={anchor}
+        anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+      >
+        <div className={d.div}>
+          <div>
+            <p className={d.date}>
+              {date},{' '}
+              {getMonthsArr(selectedMonth.year)[selectedMonth.month].name}
+            </p>
+          </div>
+          <p>
+            Daily norma: <span className={d.span}>{norm}</span>
+          </p>
+          <p>
+            Fulfillment of the daily norm:{' '}
+            <span className={d.span}>{percentageWaterDrunk}%</span>
+          </p>
+          <p>
+            How many servings of water:{' '}
+            <span className={d.span}>
+              {Array.isArray(dosesWater) ? dosesWater.length : 0}
+            </span>
           </p>
         </div>
-        <p>
-          Daily norma: <span className={d.span}>{norm}</span>
-        </p>
-        <p>
-          Fulfillment of the daily norm: <span className={d.span}>{percentageWaterDrunk}%</span>
-        </p>
-        <p>
-          How many servings of water: <span className={d.span}>{Array.isArray(dosesWater) ? dosesWater.length : 0}</span>
-        </p>
-      </div>
-    </Popover>
-  ), [id, open, anchorEl, handleClose, coordsButton.top, leftCoordinate, date, norm, selectedMonth, percentageWaterDrunk, dosesWater]);
+      </Popover>
+    ),
+    [
+      id,
+      open,
+      anchorEl,
+      coordsButton.top,
+      leftCoordinate,
+      date,
+      norm,
+      selectedMonth,
+      percentageWaterDrunk,
+      dosesWater,
+      anchor,
+    ]
+  );
 
   return (
     <>
       <>
-        <button className={b.button}
+        <button
+          className={b.button}
           data-fulfilled={percentageWaterDrunk >= 100 ? 'true' : 'false'}
           disabled={!percentageWaterDrunk ? true : false}
           aria-describedby={id}

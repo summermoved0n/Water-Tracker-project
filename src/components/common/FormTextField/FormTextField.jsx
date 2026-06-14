@@ -1,19 +1,12 @@
 import { useField } from 'formik';
 import {
   ErrorMessage,
-  FormIconContainer,
   FormInput,
   FormInputContainer,
-  SuccessMessage,
 } from './FormTextField.styled';
 import PropTypes from 'prop-types';
-// import { Icon } from '../../../Icon/Icon';
 
-export const FormTextField = ({
-  successMessage,
-  isFormSubmitted,
-  ...props
-}) => {
+export const FormTextField = ({ isFormSubmitted, ...props }) => {
   const [field, meta] = useField(props);
 
   const invalid = isFormSubmitted && meta.error;
@@ -34,7 +27,6 @@ export const FormTextField = ({
 
           <ErrorMessage>{meta.error}</ErrorMessage>
         </>
-        (
         {/* <FormIconContainer>
           <Icon iconName={'icon-check'} stroke={'#00C3AD'} fill={'#00C3AD'} />
         </FormIconContainer> */}
