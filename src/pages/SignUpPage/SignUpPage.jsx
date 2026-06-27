@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthError } from '../../redux/auth/authSelectors';
 import {
   SignupContainer,
@@ -6,9 +6,16 @@ import {
   StyledErrorMessage,
 } from './SignUpPage.styled';
 import { AuthForm } from '../../components/AuthForm';
+import { useEffect } from 'react';
+import { clearAuthError } from '../../redux/auth/authSlice';
 
 const SignUpPage = () => {
+  const dispatch = useDispatch();
   const authError = useSelector(selectAuthError);
+
+  useEffect(() => {
+    dispatch(clearAuthError());
+  }, [dispatch]);
 
   return (
     <SignupContainer>

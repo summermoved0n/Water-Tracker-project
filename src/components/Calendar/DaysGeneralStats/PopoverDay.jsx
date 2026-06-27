@@ -47,7 +47,7 @@ const PopoverDay = ({ date, norm, selectedMonth }) => {
         id={id}
         open={open}
         anchorEl={anchorEl}
-        onClose={setAnchorEl(null)}
+        onClose={() => setAnchorEl(null)}
         anchorReference={anchor}
         anchorPosition={{ top: coordsButton.top, left: leftCoordinate }}
         anchorOrigin={{

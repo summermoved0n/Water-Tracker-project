@@ -5,18 +5,19 @@ import {
   requestSignUp,
   setToken,
 } from '../../services/authAPI';
-import { toastError, toastSuccess } from '../../services/toastNotification';
+import { toast } from 'react-toastify';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
   async (formData, thunkAPI) => {
     try {
       const response = await requestSignUp(formData);
-      toastSuccess('Successfully signed up');
+      toast.success('Successfully signed up');
       return response;
     } catch (error) {
-      toastError('Failed to sign up. Try again');
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Failed to sign up. Try again'
+      );
     }
   }
 );
@@ -26,11 +27,14 @@ export const signInThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await requestLogIn(formData);
-      toastSuccess('Successfully logged in');
+      console.log(response);
+
+      toast.success('Successfully logged in');
       return response;
     } catch (error) {
-      toastError('Failed to log in. Try again');
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Failed to log in. Try again'
+      );
     }
   }
 );
@@ -42,11 +46,12 @@ export const logOutThunk = createAsyncThunk(
     try {
       setToken(token);
       await requestLogOut();
-      toastSuccess('Successfully loggged out');
+      toast.success('Successfully loggged out');
       return;
     } catch (error) {
-      toastError('Failed to log out. Try again');
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Failed to log out. Try again'
+      );
     }
   }
 );

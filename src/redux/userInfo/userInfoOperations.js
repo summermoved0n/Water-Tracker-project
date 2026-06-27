@@ -16,6 +16,7 @@ export const userAvatarThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestAvatarUpdate(data);
+      console.log(response);
       toast.success('Avatar updated successfully');
       return response;
     } catch (error) {

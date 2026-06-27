@@ -88,7 +88,7 @@ export const StyledErrorMessage = styled.p`
   margin-top: 20px;
   width: 280px;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   color: var(--secondary-color-red);
   @media (min-width: 768px) {
     width: 320px;

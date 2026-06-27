@@ -14,7 +14,6 @@ import {
   StyledToggleBtn,
   StyledWrapper,
 } from './SignInForm.styled';
-//import { HiOutlineEyeSlash, HiOutlineEye } from 'react-icons/hi2';
 import { useState } from 'react';
 import { Icon } from '../Icon/Icon';
 
@@ -41,11 +40,15 @@ const SignInForm = () => {
   };
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    event.preventDefault();
-    const newUser = { email, password };
-    dispatch(signInThunk(newUser));
-    resetForm();
+    try {
+      const newUser = { email, password };
+      dispatch(signInThunk(newUser));
+      resetForm();
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <Formik
       initialValues={formInitialValues}
