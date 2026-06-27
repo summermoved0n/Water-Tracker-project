@@ -1,11 +1,11 @@
-import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as t,b as d,t as p,c as s,d as x,e as l,f as m,g as u,S as g,A as c}from"./SignUpPage.styled-488b7eda.js";const b=o.div`
+import{u as a,b as n,h as s,r as d,k as p,j as e}from"./index-6f8dfc92.js";import{n as r,m as u,a as o,b as l,t as x,c as m,d as c,e as g,f as h,g as b,S as k,A as f}from"./SignUpPage.styled-8bdddb3c.js";const w=r.div`
   width: 100%;
   height: 100vh;
   position: absolute;
   top: 60px;
   left: 0;
   z-index: -10;
-  background-image: url(${n}), url(${t});
+  background-image: url(${u}), url(${o});
   background-size: 100%, cover;
   background-repeat: no-repeat;
   background-position:
@@ -16,7 +16,7 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(${d}), url(${t});
+    background-image: url(${l}), url(${o});
   }
 
   @media (min-width: 768px) {
@@ -27,7 +27,7 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
     top: -20px;
     left: 0;
     right: 30px;
-    background-image: url(${p});
+    background-image: url(${x});
     background-size: cover;
     background-position: center;
 
@@ -35,7 +35,7 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${s});
+      background-image: url(${m});
     }
   }
 
@@ -46,7 +46,7 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
     height: 100vh;
     top: 60px;
     left: 18px;
-    background-image: url(${x}), url(${l});
+    background-image: url(${c}), url(${g});
     background-size: 916px, 1404px;
     background-position:
       top 28px left -51px,
@@ -56,14 +56,14 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(${m}), url(${u});
+      background-image: url(${h}), url(${b});
     }
   }
-`,h=o.p`
+`,v=r.p`
   margin-top: 20px;
   width: 280px;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   color: var(--secondary-color-red);
   @media (min-width: 768px) {
     width: 320px;
@@ -74,4 +74,4 @@ import{b as r,g as a,j as i}from"./index-a659894d.js";import{n as o,m as n,a as 
     margin-left: auto;
     margin-right: 133px;
   }
-`,v=()=>{const e=r(a);return i.jsxs(g,{children:[i.jsx(b,{}),i.jsx(c,{}),e&&i.jsx(h,{children:e})]})};export{v as default};
+`,E=()=>{const i=a(),t=n(s);return d.useEffect(()=>{i(p())},[i]),e.jsxs(k,{children:[e.jsx(w,{}),e.jsx(f,{}),t&&e.jsx(v,{children:t})]})};export{E as default};
