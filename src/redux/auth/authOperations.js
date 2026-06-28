@@ -27,8 +27,6 @@ export const signInThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await requestLogIn(formData);
-      console.log(response);
-
       toast.success('Successfully logged in');
       return response;
     } catch (error) {

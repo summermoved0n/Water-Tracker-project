@@ -50,7 +50,7 @@ const DailyNormaModal = ({ onClose }) => {
   };
 
   return (
-    <div className={css.container}>
+    <div>
       <div className={css.title}>
         <h2 className={css.titleText}>My daily norma</h2>
       </div>
@@ -161,18 +161,18 @@ const DailyNormaModal = ({ onClose }) => {
           value={amount}
           onChange={onChangeAmount}
           required
-        ></input>
+        />
       </div>
-      <div className={css.saveBtn}>
-        <button
-          type="submit"
-          className={css.normaModalBtn}
-          aria-label="click to save"
-          onClick={() => handleSubmit(result)}
-        >
-          Save
-        </button>
-      </div>
+      {/* <div className={css.saveBtn}> */}
+      <button
+        type="submit"
+        className={css.normaModalBtn}
+        aria-label="click to save"
+        onClick={() => handleSubmit(result)}
+      >
+        Save
+      </button>
+      {/* </div> */}
     </div>
   );
 };

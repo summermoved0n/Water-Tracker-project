@@ -16,12 +16,13 @@ export const userAvatarThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestAvatarUpdate(data);
-      console.log(response);
       toast.success('Avatar updated successfully');
       return response;
     } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(error.response.data?.message || 'Avatar can`t be updated');
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Avatar can`t be updated'
+      );
     }
   }
 );
@@ -36,8 +37,10 @@ export const updateUserInfoThunk = createAsyncThunk(
       toast.success('User info updated successfully');
       return response;
     } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(error.response.data?.message || 'User info didn`t update');
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'User info didn`t update'
+      );
     }
   }
 );
@@ -49,9 +52,13 @@ export const updateWaterRateThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestUpdateWaterRate(newWaterRate);
+      toast.success('Water rate updated successfully');
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(error.response.data?.message || 'Water rate didn`t update');
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Water rate didn`t update'
+      );
     }
   }
 );
@@ -70,7 +77,9 @@ export const refreshUserThunk = createAsyncThunk(
       const response = await requestRefreshUser();
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error.response.data?.message || 'Something went wrong with user refresh'
+      );
     }
   }
 );

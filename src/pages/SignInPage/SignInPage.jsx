@@ -14,7 +14,9 @@ const SignInPage = () => {
   const authError = useSelector(selectAuthError);
 
   useEffect(() => {
-    dispatch(clearAuthError());
+    return () => {
+      dispatch(clearAuthError());
+    };
   }, [dispatch]);
 
   return (

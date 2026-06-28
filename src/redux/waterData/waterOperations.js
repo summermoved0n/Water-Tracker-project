@@ -8,6 +8,7 @@ import {
   requestToday,
   requestUpdateWater,
 } from '../../services/waterDataAPI';
+import { toast } from 'react-toastify';
 
 export const todayThunk = createAsyncThunk(
   'water-notes/today',
@@ -16,9 +17,10 @@ export const todayThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestToday();
+      console.log(response);
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data?.message || 'Error');
     }
   }
 );
@@ -33,7 +35,7 @@ export const monthThunk = createAsyncThunk(
       const response = await requestMonth(date);
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data?.message || 'Error');
     }
   }
 );
@@ -46,9 +48,11 @@ export const addWaterThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestAddWater(waterData);
+      toast.success(response.data?.message || 'Water note added successfully');
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      toast.error(error.response.data?.message || 'Error');
+      return thunkAPI.rejectWithValue(error.response.data?.message || 'Error');
     }
   }
 );
@@ -61,9 +65,12 @@ export const deleteWaterThunk = createAsyncThunk(
     try {
       setToken(token);
       const response = await requestDeleteWater(waterId);
+      toast.success(
+        response.data?.message || 'Water note deleted successfully'
+      );
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data?.message || 'Error');
     }
   }
 );
@@ -78,9 +85,12 @@ export const updateWaterThunk = createAsyncThunk(
 
       const { id, newData } = data;
       const response = await requestUpdateWater(id, newData);
+      toast.success(
+        response.data?.message || 'Water note updated successfully'
+      );
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data?.message || 'Error');
     }
   }
 );

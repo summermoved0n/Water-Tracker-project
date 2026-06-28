@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import sprite from '../../images/sprite.svg';
 import { GrAdd } from 'react-icons/gr';
 import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
   monthThunk,
-  todayThunk,
+  // todayThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './AddWater.module.css';
 
@@ -16,9 +16,9 @@ export default function AddWaterModal({ onClose }) {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(todayThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(todayThunk());
+  // }, [dispatch]);
 
   const incrementWater = () => {
     setWaterValue((prev) => prev + 50);
