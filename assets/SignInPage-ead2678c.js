@@ -1,4 +1,4 @@
-import{u as a,b as n,h as s,r as d,k as p,j as e}from"./index-6f8dfc92.js";import{n as r,m as u,a as o,b as l,t as x,c as m,d as c,e as g,f as h,g as b,S as k,A as f}from"./SignUpPage.styled-8bdddb3c.js";const w=r.div`
+import{u as a,b as n,h as s,r as d,k as p,j as e}from"./index-77d2b444.js";import{n as r,m as u,a as o,b as l,t as x,c as m,d as c,e as g,f as h,g as b,S as k,A as f}from"./SignUpPage.styled-3c2192c3.js";const w=r.div`
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -74,4 +74,4 @@ import{u as a,b as n,h as s,r as d,k as p,j as e}from"./index-6f8dfc92.js";impor
     margin-left: auto;
     margin-right: 133px;
   }
-`,E=()=>{const i=a(),t=n(s);return d.useEffect(()=>{i(p())},[i]),e.jsxs(k,{children:[e.jsx(w,{}),e.jsx(f,{}),t&&e.jsx(v,{children:t})]})};export{E as default};
+`,E=()=>{const i=a(),t=n(s);return d.useEffect(()=>()=>{i(p())},[i]),e.jsxs(k,{children:[e.jsx(w,{}),e.jsx(f,{}),t&&e.jsx(v,{children:t})]})};export{E as default};

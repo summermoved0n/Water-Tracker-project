@@ -1,1 +1,0 @@
-import{u as e,b as a,h as o,r as u,k as c,j as r}from"./index-6f8dfc92.js";import{S as i,h as n,A as h,i as p}from"./SignUpPage.styled-8bdddb3c.js";const d=()=>{const s=e(),t=a(o);return u.useEffect(()=>{s(c())},[s]),r.jsxs(i,{children:[r.jsx(n,{}),r.jsx(h,{isRegister:!0}),t&&r.jsx(p,{children:t})]})};export{d as default};
