@@ -8,6 +8,7 @@
   flex-direction: row;
   margin-left: 8px;
   color: var(--primery-color-blue);
+  transition: color 250ms ease;
 }
 .signinButton:hover {
   color: var(--secondary-color-orange);

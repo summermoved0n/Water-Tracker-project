@@ -4,7 +4,7 @@ import mobBottle from '../../images/signup/mobile/bottle-sign-in@1x.png';
 import mobBubbles from '../../images/signup/mobile/background-element-sign-in@1x.png';
 
 import mobBottle2x from '../../images/signup/mobile/bottle-sign-in@2x.png';
-import mobBubbles2x from '../../images/signup/mobile/background-element-sign-in@1x.png';
+import mobBubbles2x from '../../images/signup/mobile/background-element-sign-in@2x.png';
 
 import tabBottle from '../../images/signup/tablet/bottle-for-sign-in@1x.png';
 import tabBottle2x from '../../images/signup/tablet/bottle-for-sign-in@2x.png';
@@ -16,18 +16,18 @@ import deskBottle2x from '../../images/signup/desktop/bottle-for-sign-in@2x.png'
 import deskBub2x from '../../images/signup/desktop/background-element-main-page@2x.png';
 
 export const StyledBackgroundWrap = styled.div`
-  width: 100%;
-  height: 100vh;
   position: absolute;
-  top: 60px;
-  left: 0;
-  z-index: -10;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background-image: url(${mobBottle}), url(${mobBubbles});
-  background-size: 100%, cover;
+  background-size:
+    min(280px, calc(100% - 40px)) auto,
+    100% auto;
   background-repeat: no-repeat;
   background-position:
-    top 400px left 20px,
-    center;
+    center bottom 16px,
+    center top;
 
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -37,16 +37,9 @@ export const StyledBackgroundWrap = styled.div`
   }
 
   @media (min-width: 768px) {
-    margin: 0 auto;
-    max-width: 768px;
-    width: 100%;
-    height: 100vh;
-    top: -20px;
-    left: 0;
-    right: 30px;
     background-image: url(${tabBottle});
-    background-size: cover;
-    background-position: center;
+    background-size: 768px 680px;
+    background-position: center bottom;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -57,17 +50,13 @@ export const StyledBackgroundWrap = styled.div`
   }
 
   @media (min-width: 1440px) {
-    margin: 0 auto;
-    max-width: 1404px;
-    width: 100%;
-    height: 100vh;
-    top: 60px;
-    left: 18px;
     background-image: url(${deskBottle}), url(${deskBub});
-    background-size: 916px, 1404px;
+    background-size:
+      916px 680px,
+      1404px 582px;
     background-position:
-      top 28px left -51px,
-      center;
+      calc(50% - 720px) bottom,
+      center top;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
@@ -80,17 +69,15 @@ export const StyledBackgroundWrap = styled.div`
 
 export const StyledErrorMessage = styled.p`
   margin-top: 20px;
-  width: 280px;
   font-size: 18px;
-  text-align: left;
+  text-align: center;
   color: var(--secondary-color-red);
   @media (min-width: 768px) {
-    width: 320px;
-    margin-right: auto;
+    text-align: left;
     font-size: 20px;
   }
   @media (min-width: 1440px) {
-    margin-left: auto;
-    margin-right: 133px;
+    margin-right: 104px;
+    text-align: right;
   }
 `;

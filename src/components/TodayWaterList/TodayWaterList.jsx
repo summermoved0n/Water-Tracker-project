@@ -8,6 +8,7 @@ import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 import { todayThunk } from '../../redux/waterData/waterOperations';
 import sprite from '../../images/sprite.svg';
 import s from './TodayWaterList.module.css';
+import { toast } from 'react-toastify';
 
 const TodayWaterList = () => {
   const todayWater = useSelector(selectTodayWater);
@@ -29,8 +30,12 @@ const TodayWaterList = () => {
   };
 
   const handleCloseModal = async () => {
-    await dispatch(todayThunk());
-    setModalIsOpen(false);
+    try {
+      await dispatch(todayThunk()).unwrap();
+      setModalIsOpen(false);
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   return (

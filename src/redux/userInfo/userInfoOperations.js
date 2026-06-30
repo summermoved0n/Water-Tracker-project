@@ -19,9 +19,9 @@ export const userAvatarThunk = createAsyncThunk(
       toast.success('Avatar updated successfully');
       return response;
     } catch (error) {
-      toast.error(error.response.data?.message || 'Avatar can`t be updated');
+      toast.error(error.response?.data?.message || 'Avatar can`t be updated');
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Avatar can`t be updated'
+        error.response?.data?.message || 'Avatar can`t be updated'
       );
     }
   }
@@ -37,9 +37,9 @@ export const updateUserInfoThunk = createAsyncThunk(
       toast.success('User info updated successfully');
       return response;
     } catch (error) {
-      toast.error(error.response.data?.message || 'User info didn`t update');
+      toast.error(error.response?.data?.message || 'User info didn`t update');
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'User info didn`t update'
+        error.response?.data?.message || 'User info didn`t update'
       );
     }
   }
@@ -55,9 +55,8 @@ export const updateWaterRateThunk = createAsyncThunk(
       toast.success('Water rate updated successfully');
       return response;
     } catch (error) {
-      toast.error(error.response.data?.message || 'Water rate didn`t update');
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Water rate didn`t update'
+        error.response?.data?.message || 'Water rate didn`t update'
       );
     }
   }
@@ -78,7 +77,8 @@ export const refreshUserThunk = createAsyncThunk(
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Something went wrong with user refresh'
+        error.response?.data?.message ||
+          'Something went wrong with user refresh'
       );
     }
   }

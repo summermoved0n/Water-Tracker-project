@@ -46,11 +46,15 @@ const SignUpForm = () => {
     repeatPassword: '',
   };
 
-  const handleSubmit = ({ email, password }, { resetForm }) => {
-    event.preventDefault();
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
     const newUser = { email, password };
-    dispatch(signUpThunk(newUser));
-    resetForm();
+
+    try {
+      await dispatch(signUpThunk(newUser)).unwrap();
+      resetForm();
+    } catch (error) {
+      // Error is already handled in the thunk
+    }
   };
   return (
     <Formik

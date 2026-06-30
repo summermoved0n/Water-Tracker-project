@@ -12,6 +12,7 @@
   line-height: 1.25;
   color: var(--primery-color-white);
   text-align: center;
+  transition: all 250ms ease;
 }
 
 .svg {

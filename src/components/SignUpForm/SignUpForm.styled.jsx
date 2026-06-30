@@ -52,7 +52,7 @@ export const StyledForm = styled(Form)`
     color: var(--secondary-color-lightblue);
   }
   input:focus {
-    outline-color: var(--secondary-color---5);
+    outline-color: var(--primery-color-blue);
   }
   input:invalid {
     color: var(--secondary-color-red);
@@ -88,6 +88,9 @@ export const StyledSubmitBtn = styled.button`
   background-color: var(--primery-color-blue);
   color: var(--primery-color-white);
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  transition: box-shadow 250ms ease;
+
+
   @media (min-width: 768px) {
     font-size: 18px;
   }

@@ -39,13 +39,13 @@ const SignInForm = () => {
     password: '',
   };
 
-  const handleSubmit = ({ email, password }, { resetForm }) => {
+  const handleSubmit = async ({ email, password }, { resetForm }) => {
     try {
       const newUser = { email, password };
-      dispatch(signInThunk(newUser));
+      await dispatch(signInThunk(newUser));
       resetForm();
     } catch (error) {
-      console.log(error);
+      // Error is already handled in the thunk
     }
   };
 

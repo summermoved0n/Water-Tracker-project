@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import {
   addWaterThunk,
   monthThunk,
-  // todayThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './AddWater.module.css';
+import { toast } from 'react-toastify';
 
 export default function AddWaterModal({ onClose }) {
   const [time, setTime] = useState('00:00 AM');
@@ -15,10 +15,6 @@ export default function AddWaterModal({ onClose }) {
   const [changedTime, setChangedTime] = useState('00:00 AM');
 
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(todayThunk());
-  // }, [dispatch]);
 
   const incrementWater = () => {
     setWaterValue((prev) => prev + 50);
@@ -66,11 +62,13 @@ export default function AddWaterModal({ onClose }) {
       time: changedTime,
     };
 
-    // console.log(newNote);
-    await dispatch(addWaterThunk(newNote));
-
-    await dispatch(monthThunk(formattedMonth));
-    onClose();
+    try {
+      await dispatch(addWaterThunk(newNote)).unwrap();
+      await dispatch(monthThunk(formattedMonth)).unwrap();
+      onClose();
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   return (

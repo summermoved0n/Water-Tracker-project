@@ -5,6 +5,7 @@ import {
   todayThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './DeleteModal.module.css';
+import { toast } from 'react-toastify';
 
 export default function DeleteModal({ onClose, modalData }) {
   const dispatch = useDispatch();
@@ -14,10 +15,14 @@ export default function DeleteModal({ onClose, modalData }) {
   const formattedMonth = `${year}-${month}`;
 
   const handleDelete = async () => {
-    await dispatch(deleteWaterThunk(modalData));
-    await dispatch(todayThunk());
-    await dispatch(monthThunk(formattedMonth));
-    onClose();
+    try {
+      await dispatch(deleteWaterThunk(modalData)).unwrap();
+      await dispatch(todayThunk()).unwrap();
+      await dispatch(monthThunk(formattedMonth)).unwrap();
+      onClose();
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   return (

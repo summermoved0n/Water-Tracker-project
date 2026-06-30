@@ -49,15 +49,7 @@ const routes = [
   },
   {
     path: '*',
-    element: (
-      <Navigate
-        to={
-          <RestrictedRoute>
-            <WelcomePage />
-          </RestrictedRoute>
-        }
-      />
-    ),
+    element: <Navigate to="/home" replace />,
   },
 ];
 

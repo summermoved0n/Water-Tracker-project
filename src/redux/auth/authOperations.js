@@ -16,7 +16,7 @@ export const signUpThunk = createAsyncThunk(
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Failed to sign up. Try again'
+        error.response?.data?.message || 'Failed to sign up. Try again'
       );
     }
   }
@@ -31,7 +31,7 @@ export const signInThunk = createAsyncThunk(
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Failed to log in. Try again'
+        error.response?.data?.message || 'Failed to log in. Try again'
       );
     }
   }
@@ -48,7 +48,7 @@ export const logOutThunk = createAsyncThunk(
       return;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.response.data?.message || 'Failed to log out. Try again'
+        error.response?.data?.message || 'Failed to log out. Try again'
       );
     }
   }

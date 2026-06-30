@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import css from './DailyNormaModal.module.css';
 import { useDispatch } from 'react-redux';
 import { updateWaterRateThunk } from '../../redux/userInfo/userInfoOperations';
-import { todayThunk } from '../../redux/waterData/waterOperations';
+import { toast } from 'react-toastify';
 
 const DailyNormaModal = ({ onClose }) => {
   const [mass, setMass] = useState('');
@@ -29,9 +29,6 @@ const DailyNormaModal = ({ onClose }) => {
     setAmount(Number(event.currentTarget.value));
     setResult(Number(event.currentTarget.value));
   };
-  useEffect(() => {
-    dispatch(todayThunk());
-  }, [dispatch]);
 
   useEffect(() => {
     if (gender === 'woman') {
@@ -44,9 +41,13 @@ const DailyNormaModal = ({ onClose }) => {
   const handleSubmit = async (result) => {
     const formattedResult = result * 1000;
 
-    await dispatch(updateWaterRateThunk(formattedResult));
+    try {
+      await dispatch(updateWaterRateThunk(formattedResult)).unwrap();
 
-    onClose();
+      onClose();
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   return (

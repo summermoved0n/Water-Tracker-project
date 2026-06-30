@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTodayWater } from '../../redux/waterData/waterSelectors';
 import { todayThunk } from '../../redux/waterData/waterOperations';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import { toast } from 'react-toastify';
 
 const WaterRatioPanel = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,14 @@ const WaterRatioPanel = () => {
     setModalContent(children);
     setModalIsOpen(true);
   };
+
   const handleCloseModal = async () => {
-    await dispatch(todayThunk());
-    setModalIsOpen(false);
+    try {
+      await dispatch(todayThunk()).unwrap();
+      setModalIsOpen(false);
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   return (

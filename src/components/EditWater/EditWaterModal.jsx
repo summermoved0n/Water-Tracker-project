@@ -8,6 +8,7 @@ import {
   updateWaterThunk,
 } from '../../redux/waterData/waterOperations';
 import css from './EditWater.module.css';
+import { toast } from 'react-toastify';
 
 const convertTo24HourFormat = (time12Hour) => {
   const [time, period] = time12Hour.split(' ');
@@ -65,9 +66,13 @@ export default function EditWaterModal({ onClose, modalData }) {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const formattedMonth = `${year}-${month}`;
 
-    await dispatch(updateWaterThunk({ newData, id: recordId }));
-    await dispatch(todayThunk);
-    await dispatch(monthThunk(formattedMonth));
+    try {
+      await dispatch(updateWaterThunk({ newData, id: recordId })).unwrap();
+      await dispatch(todayThunk()).unwrap();
+      await dispatch(monthThunk(formattedMonth)).unwrap();
+    } catch (error) {
+      toast.error(error || 'Something went wrong');
+    }
   };
 
   const incrementAmount = () => {

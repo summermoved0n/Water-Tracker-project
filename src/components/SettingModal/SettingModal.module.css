@@ -78,9 +78,16 @@
   display: flex;
   gap: 8px;
 }
+
+.gender_wraper label {
+  cursor: pointer;
+}
+
 .genderRadio {
+  cursor: pointer;
   border-color: var(--primery-color-blue);
 }
+
 .name_lable {
   font-weight: 500;
   font-size: 18px;
@@ -162,10 +169,15 @@
   padding: 0;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background-color: var(--primery-color-blue);
+  transition: box-shadow 250ms ease;
 
   font-weight: 500;
   color: var(--primery-color-white);
   margin-top: 24px;
+}
+
+.save_btn:hover {
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
 }
 
 .error {

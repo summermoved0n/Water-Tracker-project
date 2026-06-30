@@ -12,15 +12,22 @@ export default function Modal({ isOpen, onClose, children }) {
   };
 
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
     };
-    if (isOpen) {
-      document.addEventListener('keydown', onKeyDown);
-    } else {
-      document.removeEventListener('keydown', onKeyDown);
-    }
+
+    document.addEventListener('keydown', onKeyDown);
+
     return () => {
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onClose]);
